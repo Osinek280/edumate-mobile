@@ -1,5 +1,5 @@
-import 'package:edumate_mobile/common/bloc/button/auth/auth_state.dart';
-import 'package:edumate_mobile/common/bloc/button/auth/auth_state_cubit.dart';
+import 'package:edumate_mobile/common/bloc/auth/auth_state.dart';
+import 'package:edumate_mobile/common/bloc/auth/auth_state_cubit.dart';
 import 'package:edumate_mobile/core/config/theme/app_theme.dart';
 import 'package:edumate_mobile/presentation/auth/home/pages/home.dart';
 import 'package:edumate_mobile/presentation/auth/signup.dart';

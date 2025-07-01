@@ -37,7 +37,12 @@ class AuthApiServiceImpl extends AuthApiService {
       var token = sharedPreferences.getString('token');
       var response = await sl<DioClient>().get(
         ApiUrls.userProfile,
-        options: Options(headers: {'Authorization': 'Bearer $token '}),
+        options: Options(
+          headers: {
+            'Authorization':
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3NTEzNjk5NzQsImV4cCI6MTc1MTM3MTQxNH0.JQhJzPclaB6RUDYYm3ylO5NcuLi7TE3wSMoIe2Eaya8',
+          },
+        ),
       );
 
       return Right(response);

@@ -10,7 +10,7 @@ class UserModel {
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       email: map['email'] as String,
-      username: map['username'] as String,
+      username: map['firstname'] as String,
     );
   }
 }
