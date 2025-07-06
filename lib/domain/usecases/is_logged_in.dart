@@ -8,3 +8,8 @@ class IsLoggedInUseCase implements UseCase<bool, dynamic> {
     return sl<AuthRepository>().isLoggedIn();
   }
 }
+
+class FakeIsLoggedInUseCase implements IsLoggedInUseCase {
+  @override
+  Future<bool> call({dynamic param}) async => false;
+}
