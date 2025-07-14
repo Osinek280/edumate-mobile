@@ -2,7 +2,6 @@ import 'package:edumate_mobile/common/bloc/button/button_state_cubit.dart';
 import 'package:edumate_mobile/common/widgets/button/basic_app_button.dart';
 import 'package:edumate_mobile/data/models/signin_req_params.dart';
 import 'package:edumate_mobile/domain/usecases/signin.dart';
-import 'package:edumate_mobile/presentation/auth/home/pages/home.dart';
 import 'package:edumate_mobile/service_locator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -25,10 +24,7 @@ class SigninPage extends StatelessWidget {
         child: BlocListener<ButtonStateCubit, ButtonState>(
           listener: (context, state) {
             if (state is ButtonSuccessState) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              );
+              Navigator.pushReplacementNamed(context, "/books");
             }
             if (state is ButtonFailureState) {
               var snackBar = SnackBar(content: Text(state.errorMessage));

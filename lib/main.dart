@@ -1,7 +1,8 @@
 import 'package:edumate_mobile/common/bloc/auth/auth_state.dart';
 import 'package:edumate_mobile/common/bloc/auth/auth_state_cubit.dart';
 import 'package:edumate_mobile/core/config/theme/app_theme.dart';
-import 'package:edumate_mobile/presentation/auth/home/pages/home.dart';
+import 'package:edumate_mobile/presentation/auth/main_navigation.dart';
+import 'package:edumate_mobile/presentation/auth/signin.dart';
 import 'package:edumate_mobile/presentation/auth/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,10 +35,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: AppTheme.appTheme,
         debugShowCheckedModeBanner: false,
+        routes: {
+          "/signin": (context) => SigninPage(),
+          "/signup": (context) => SignupPage(),
+          "/books": (context) => MainNavigationPage(),
+        },
         home: BlocBuilder<AuthStateCubit, AuthState>(
           builder: (context, state) {
             if (state is Authenticated) {
-              return const HomePage();
+              return const MainNavigationPage();
             }
             if (state is UnAuthenticated) {
               return SignupPage();

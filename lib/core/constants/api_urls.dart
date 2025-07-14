@@ -3,7 +3,7 @@ class ApiUrls {
   static const String _prodBaseURL =
       'https://edumate-production-d74d.up.railway.app/';
 
-  static const bool _isProduction = true;
+  static const bool _isProduction = false;
   static String get _baseURL => _isProduction ? _prodBaseURL : _devBaseURL;
 
   static String get register => '${_baseURL}api/v1/auth/register';

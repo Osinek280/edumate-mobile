@@ -35,6 +35,7 @@ class AuthApiServiceImpl extends AuthApiService {
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();
       var token = sharedPreferences.getString('token');
+
       var response = await sl<DioClient>().get(
         ApiUrls.userProfile,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
@@ -42,7 +43,12 @@ class AuthApiServiceImpl extends AuthApiService {
 
       return Right(response);
     } on DioException catch (e) {
-      return Left(e.response!.data['message']);
+      if (e.response?.statusCode == 403) {
+        SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+        await sharedPreferences.clear();
+      }
+      return Left(e.response?.data['message'] ?? 'Unknown error');
     }
   }
 
